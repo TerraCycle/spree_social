@@ -1,5 +1,7 @@
-Spree::UserRegistrationsController.class_eval do
-  after_action :clear_omniauth, only: :create
+module Spree::UserRegistrationsControllerDecorator
+  def self.prepended(base)
+    base.after_action :clear_omniauth, only: :create
+  end
 
   private
 
@@ -13,3 +15,5 @@ Spree::UserRegistrationsController.class_eval do
     session[:omniauth] = nil unless @spree_user.new_record?
   end
 end
+
+::Spree::UserRegistrationsController.prepend(Spree::UserRegistrationsControllerDecorator)
