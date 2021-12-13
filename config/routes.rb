@@ -4,11 +4,13 @@ Spree::Core::Engine.add_routes do
              only: [:omniauth_callbacks],
              controllers: { omniauth_callbacks: 'spree/omniauth_callbacks' },
              path: Spree::SocialConfig[:path_prefix]
-  resources :user_authentications
+  scope '(:locale)', locale: /#{Spree.available_locales.join('|')}/, defaults: { locale: nil } do
+    resources :user_authentications
 
-  get 'account' => 'users#show', as: 'user_root'
+    get 'account' => 'users#show', as: 'user_root'
 
-  namespace :admin do
-    resources :authentication_methods
+    namespace :admin do
+      resources :authentication_methods
+    end
   end
 end
