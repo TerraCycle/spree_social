@@ -1,6 +1,7 @@
 require 'stringex'
 
-class Spree::AuthenticationMethod < ActiveRecord::Base
+module Spree
+  class AuthenticationMethod < ActiveRecord::Base
   validates :provider, :api_key, :api_secret, presence: true
 
   def self.active_authentication_methods?
@@ -14,4 +15,5 @@ class Spree::AuthenticationMethod < ActiveRecord::Base
     sc = sc.where.not(provider: user.user_authentications.pluck(:provider)) unless user.user_authentications.empty?
     sc
   }
+  end
 end
