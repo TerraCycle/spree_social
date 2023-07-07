@@ -3,7 +3,7 @@ Spree::Core::Engine.add_routes do
              class_name: Spree::User,
              only: [:omniauth_callbacks],
              controllers: { omniauth_callbacks: 'spree/omniauth_callbacks' },
-             path: Spree::SocialConfig[:path_prefix]
+             path: defined?(Spree::SocialConfig) ? Spree::SocialConfig[:path_prefix] : 'users'
   scope '(:locale)', locale: /#{Spree.available_locales.join('|')}/, defaults: { locale: nil } do
     resources :user_authentications
 
