@@ -21,7 +21,8 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_runtime_dependency 'spree_core', '>= 3.1.0', '< 5.0'
+  spree_version =  '>= 3.1.0', '< 5.0'
+  s.add_dependency 'spree_core', spree_version
   s.add_runtime_dependency 'spree_auth_devise', '>= 3.1.0', '< 5.0'
   s.add_runtime_dependency 'spree_extension'
   s.add_runtime_dependency 'omniauth'
@@ -33,22 +34,5 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'omniauth-amazon'
   s.add_runtime_dependency 'deface', '~> 1.0'
 
-  s.add_development_dependency 'capybara'
-  s.add_development_dependency 'capybara-screenshot'
-  s.add_development_dependency 'database_cleaner'
-  s.add_development_dependency 'ffaker'
-  s.add_development_dependency 'rspec-rails'
-  s.add_development_dependency 'factory_bot', '~> 4.7'
-  s.add_development_dependency 'pry-rails'
-  s.add_development_dependency 'selenium-webdriver'
-  s.add_development_dependency 'simplecov'
-  s.add_development_dependency 'sqlite3', '~> 1.3.6'
-  s.add_development_dependency 'coffee-rails'
-  s.add_development_dependency 'sass-rails'
-  s.add_development_dependency 'guard-rspec'
-  s.add_development_dependency 'rubocop'
-  s.add_development_dependency 'appraisal'
-  s.add_development_dependency 'pg', '~> 0.18'
-  s.add_development_dependency 'mysql2', '~> 0.5.1'
-  s.add_development_dependency 'puma'
+  s.add_development_dependency 'spree_dev_tools'
 end
